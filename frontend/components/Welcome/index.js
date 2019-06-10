@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Welcome = () => {
 
   return (
-    <h2>Welcome</h2>
+    <h3>Welcome</h3>
   );
 };
 
