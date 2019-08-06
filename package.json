@@ -11,7 +11,9 @@
 		"lint": "eslint frontend",
 		"bundlesize": "bundlesize",
 		"clean": "rm -rf ./frontend/build",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run dev"
+		"build": "export NODE_ENV=production && rm -rf build && webpack --config webpack.client.js && webpack --config webpack.server.js",
+		"server": "node build/bundle.js",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
 	},
 	"author": "",
 	"license": "",
