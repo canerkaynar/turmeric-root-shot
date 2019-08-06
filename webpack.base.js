@@ -60,7 +60,7 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      PORT: process.env.PORT || 2000,
+      PORT: process.env.PORT,
       CUSTOM: process.env.PORT || 'kaynar',
     })
   ]
