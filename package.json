@@ -11,7 +11,7 @@
 		"lint": "eslint frontend",
 		"bundlesize": "bundlesize",
 		"clean": "rm -rf ./frontend/build",
-		"heroku-postbuild": "npm install && npm run dev"
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run dev"
 	},
 	"author": "",
 	"license": "",
