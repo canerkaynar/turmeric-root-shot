@@ -4,18 +4,21 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const path = require('path');
 
+let envKeys;
 
+if(process.env.NODE_ENV) {
 const currentPath = path.join(__dirname);
 const basePath = currentPath + '/.env';
 const fileEnv = dotenv.config({ path: basePath }).parsed;
-
-const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
+envKeys = Object.keys(fileEnv).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
   return prev;
 }, {});
-
 // eslint-disable-next-line no-console
 console.log("ENVKEYS", envKeys);
+}
+
+
 
 const cssLoaderOptions = {
   loader: 'css-loader',
@@ -78,6 +81,6 @@ module.exports = {
     //   PORT: process.env.PORT,
     //   CUSTOM: process.env.PORT || 'kaynar',
     // })
-    new webpack.DefinePlugin(envKeys)
+    envKeys && new webpack.DefinePlugin(envKeys)
   ]
 };
