@@ -2,13 +2,20 @@ const ExtractText = require('extract-text-webpack-plugin');
 const nibPath = '~nib/lib/nib/';
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const path = require('path');
 
-const env = dotenv.config().parsed;
 
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+const currentPath = path.join(__dirname);
+const basePath = currentPath + '/.env';
+const fileEnv = dotenv.config({ path: basePath }).parsed;
+
+const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
   return prev;
 }, {});
+
+// eslint-disable-next-line no-console
+console.log("ENVKEYS", envKeys);
 
 const cssLoaderOptions = {
   loader: 'css-loader',
