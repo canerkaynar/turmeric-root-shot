@@ -81,6 +81,6 @@ module.exports = {
     //   PORT: process.env.PORT,
     //   CUSTOM: process.env.PORT || 'kaynar',
     // })
-    envKeys && new webpack.DefinePlugin(envKeys)
+    new webpack.DefinePlugin(envKeys ? envKeys : {})
   ]
 };
