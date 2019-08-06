@@ -3,7 +3,12 @@ const nibPath = '~nib/lib/nib/';
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
-dotenv.config();
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 const cssLoaderOptions = {
   loader: 'css-loader',
@@ -66,5 +71,6 @@ module.exports = {
     //   PORT: process.env.PORT,
     //   CUSTOM: process.env.PORT || 'kaynar',
     // })
+    new webpack.DefinePlugin(envKeys)
   ]
 };
