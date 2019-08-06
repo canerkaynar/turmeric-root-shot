@@ -1,6 +1,6 @@
 const ExtractText = require('extract-text-webpack-plugin');
 const nibPath = '~nib/lib/nib/';
-
+const webpack = require('webpack');
 
 const cssLoaderOptions = {
   loader: 'css-loader',
@@ -56,6 +56,12 @@ module.exports = {
           use: [cssLoaderOptions, stylusLoaderOptions],
         }),
       }
-    ]
-  }
+    ],
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      PORT: process.env.PORT || 2000,
+      CUSTOM: process.env.PORT || 'kaynar',
+    })
+  ]
 };
