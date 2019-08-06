@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 const Welcome = () => {
 
   return (
-    <h2>Welcomeee</h2>
+    <div>
+      <p>NODE_ENV: {process.env.NODE_ENV}</p>
+      <p>API_GATEWAY: {process.env.API_GATEWAY}</p>
+      <p>PORT: {process.env.PORT}</p>
+      <p>CUSTOM: {process.env.CUSTOM}</p>
+    </div>
   );
 };
 
