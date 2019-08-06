@@ -1,6 +1,9 @@
 const ExtractText = require('extract-text-webpack-plugin');
 const nibPath = '~nib/lib/nib/';
 const webpack = require('webpack');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const cssLoaderOptions = {
   loader: 'css-loader',
