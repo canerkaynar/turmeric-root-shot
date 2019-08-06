@@ -8,6 +8,7 @@ import renderer from './frontend/helpers/renderer';
 import createStore from './frontend/helpers/createStore';
 
 const app = express();
+const PORT = process.env.PORT || 2000;
 
 app.use(
   '/api',
@@ -49,6 +50,6 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(2000, () => {
-  console.log('Listening on prot 2000');
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
