@@ -77,7 +77,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
+    process.env.PORT && new webpack.EnvironmentPlugin({
       NODE_ENV: process.env.NODE_ENV,
       API_GATEWAY: process.env.API_GATEWAY,
       PORT: process.env.PORT,
