@@ -98,7 +98,6 @@ module.exports = {
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV), 
       "process.env.API_GATEWAY": JSON.stringify(process.env.API_GATEWAY), 
       "process.env.CUSTOM": JSON.stringify(process.env.CUSTOM || 'custommm'), 
-      "process.env.PORT": JSON.stringify(process.env.PORT) 
     })
   ]
 };
