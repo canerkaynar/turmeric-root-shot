@@ -16,7 +16,7 @@
 		"clean": "rm -rf ./frontend/build",
 		"build": "cross-env NODE_ENV=production && rm -rf build && webpack --config webpack.client.js && webpack --config webpack.server.js",
 		"start": "node build/bundle.js",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install && npm run build"
+		"heroku-postbuild": "npm run build"
 	},
 	"author": "",
 	"license": "",
