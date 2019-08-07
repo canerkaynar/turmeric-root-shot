@@ -77,11 +77,11 @@ module.exports = {
     ],
   },
   plugins: [
-    // new webpack.EnvironmentPlugin({
-    //   NODE_ENV: process.env.NODE_ENV,
-    //   API_GATEWAY: process.env.API_GATEWAY,
-    //   PORT: process.env.PORT,
-    //   CUSTOM: process.env.CUSTOM || 'xx',
-    // })
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: process.env.NODE_ENV,
+      API_GATEWAY: process.env.API_GATEWAY,
+      PORT: process.env.PORT,
+      CUSTOM: process.env.CUSTOM || 'xx',
+    })
   ]
 };
