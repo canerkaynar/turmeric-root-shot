@@ -78,8 +78,10 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      API_GATEWAY: JSON.stringify(process.env.API_GATEWAY),
-      CUSTOM: JSON.stringify(process.env.CUSTOM || 'xx'),
+      NODE_ENV: process.env.NODE_ENV,
+      API_GATEWAY: process.env.API_GATEWAY,
+      PORT: process.env.PORT,
+      CUSTOM: process.env.CUSTOM || 'xx',
     })
   ]
 };
