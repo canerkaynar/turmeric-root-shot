@@ -4,21 +4,21 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const path = require('path');
 
-let envKeys;
+// let envKeys;
 
 
 
-if(process.env.NODE_ENV) {
-const currentPath = path.join(__dirname);
-const basePath = currentPath + '/.env';
-const fileEnv = dotenv.config({ path: basePath }).parsed;
-envKeys = fileEnv && Object.keys(fileEnv).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-  return prev;
-}, {});
-// eslint-disable-next-line no-console
-console.log("ENVKEYS", envKeys);
-}
+// if(process.env.NODE_ENV) {
+// const currentPath = path.join(__dirname);
+// const basePath = currentPath + '/.env';
+// const fileEnv = dotenv.config({ path: basePath }).parsed;
+// envKeys = fileEnv && Object.keys(fileEnv).reduce((prev, next) => {
+//   prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
+//   return prev;
+// }, {});
+// // eslint-disable-next-line no-console
+// console.log("ENVKEYS", envKeys);
+// }
 
 
 
@@ -93,8 +93,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(envKeys),
-    // new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") })
+    // new webpack.DefinePlugin(envKeys),
+    new webpack.DefinePlugin({ 
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV), 
+      "process.env.API_GATEWAY": JSON.stringify(process.env.API_GATEWAY), 
+      "process.env.CUSTOM": JSON.stringify(process.env.CUSTOM || 'custommm'), 
+      "process.env.PORT": JSON.stringify(process.env.PORT) 
+    })
   ]
 };
 
