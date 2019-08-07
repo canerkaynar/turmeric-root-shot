@@ -93,11 +93,15 @@ module.exports = {
     ],
   },
   plugins: [
-    // new webpack.DefinePlugin(envKeys),
-    new webpack.DefinePlugin({ 
-      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV), 
-      "process.env.API_GATEWAY": JSON.stringify(process.env.API_GATEWAY), 
-      "process.env.CUSTOM": JSON.stringify(process.env.CUSTOM || 'custommm'), 
+    // new webpack.DefinePlugin({ 
+    //   "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV), 
+    //   "process.env.API_GATEWAY": JSON.stringify(process.env.API_GATEWAY), 
+    //   "process.env.CUSTOM": JSON.stringify(process.env.CUSTOM || 'custommm'), 
+    // })
+    new webpack.EnvironmentPlugin({ 
+      "NODE_ENV": process.env.NODE_ENV, 
+      "API_GATEWAY": process.env.API_GATEWAY, 
+      "CUSTOM": process.env.CUSTOM || 'custommmer', 
     })
   ]
 };
