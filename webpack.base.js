@@ -4,19 +4,21 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// let envKeys;
+let envKeys;
 
-// if(process.env.NODE_ENV) {
-// const currentPath = path.join(__dirname);
-// const basePath = currentPath + '/.env';
-// const fileEnv = dotenv.config({ path: basePath }).parsed;
-// envKeys = fileEnv && Object.keys(fileEnv).reduce((prev, next) => {
-//   prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-//   return prev;
-// }, {});
-// // eslint-disable-next-line no-console
-// console.log("ENVKEYS", envKeys);
-// }
+
+
+if(process.env.NODE_ENV) {
+const currentPath = path.join(__dirname);
+const basePath = currentPath + '/.env';
+const fileEnv = dotenv.config({ path: basePath }).parsed;
+envKeys = fileEnv && Object.keys(fileEnv).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
+  return prev;
+}, {});
+// eslint-disable-next-line no-console
+console.log("ENVKEYS", envKeys);
+}
 
 
 
@@ -48,6 +50,20 @@ const stylusLoaderOptions = {
   },
 };
 
+// const env = process.env.NODE_ENV ? {
+//   NODE_ENV: process.env.NODE_ENV,
+//   API_GATEWAY: process.env.API_GATEWAY,
+//   PORT: process.env.PORT,
+//   CUSTOM: process.env.CUSTOM || 'xx',
+// } : {}
+
+// // eslint-disable-next-line no-console
+// console.log('env: ', env);
+
+
+// // eslint-disable-next-line no-console
+// console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+
 module.exports = {
   module: {
     rules: [
@@ -77,11 +93,8 @@ module.exports = {
     ],
   },
   plugins: [
-    process.env.PORT && new webpack.EnvironmentPlugin({
-      NODE_ENV: process.env.NODE_ENV,
-      API_GATEWAY: process.env.API_GATEWAY,
-      PORT: process.env.PORT,
-      CUSTOM: process.env.CUSTOM || 'xx',
-    })
+    new webpack.DefinePlugin(envKeys),
+    // new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") })
   ]
 };
+
