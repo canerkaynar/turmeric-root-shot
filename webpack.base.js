@@ -77,15 +77,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // new webpack.EnvironmentPlugin({
-    //   PORT: process.env.PORT,
-    //   CUSTOM: process.env.PORT || 'kaynar',
-    // })
-    new webpack.DefinePlugin({
-      'process.env': {
-        API_GATEWAY: JSON.stringify(process.env.API_GATEWAY),
-        CUSTOM: JSON.stringify(process.env.CUSTOM),
-      },
+    new webpack.EnvironmentPlugin({
+      API_GATEWAY: JSON.stringify(process.env.API_GATEWAY),
+      CUSTOM: JSON.stringify(process.env.CUSTOM || 'xx'),
     })
   ]
 };

@@ -6,6 +6,7 @@ const webpackNodeExternals = require('webpack-node-externals');
 const config = {
   target: 'node',
   entry: './react-ssr.js',
+  mode: 'production',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')

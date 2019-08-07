@@ -9,7 +9,7 @@ const Welcome = () => {
       <p>NODE_ENV: {process.env.NODE_ENV}</p>
       <p>API_GATEWAY: {process.env.API_GATEWAY}</p>
       <p>PORT: {process.env.PORT}</p>
-      <p>CUSTOM: {process.env.CUSTOM || 'hola'}</p>
+      <p>CUSTOM: {process.env.CUSTOM}</p>
     </div>
   );
 };
