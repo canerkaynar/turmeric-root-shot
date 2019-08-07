@@ -14,7 +14,7 @@
 		"lint": "eslint frontend",
 		"bundlesize": "bundlesize",
 		"clean": "rm -rf ./frontend/build",
-		"build": "export NODE_ENV=production && rm -rf build && webpack --config webpack.client.js && webpack --config webpack.server.js",
+		"build": "rm -rf build && webpack --config webpack.client.js && webpack --config webpack.server.js",
 		"start": "node build/bundle.js",
 		"heroku-postbuild": "npm run build"
 	},
